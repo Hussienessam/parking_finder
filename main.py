@@ -1,7 +1,7 @@
 from imageai.Detection import ObjectDetection
 detector = ObjectDetection()
 model_path = "./models/yolo-tiny.h5"
-input_path = "./input/pic2.jpeg"
+input_path = "./input/unknown3.png"
 output_path = "./output/newimage.jpg"
 detector.setModelTypeAsTinyYOLOv3()
 detector.setModelPath(model_path)
