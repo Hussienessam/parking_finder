@@ -1,18 +1,15 @@
-from imageai.Detection import ObjectDetection
+import cv2
+import matplotlib.pyplot as plt
+import cvlib as cv
+from cvlib.object_detection import draw_bbox
 import os
 
 entries = os.listdir('input/')
-detector = ObjectDetection()
 for entry in entries:
     input_path = "./input/" + entry
-    model_path = "./models/yolo-tiny.h5"
-    output_path = "./output/" + entry
-    detector.setModelTypeAsTinyYOLOv3()
-    detector.setModelPath(model_path)
-    detector.loadModel()
-    detection = detector.detectObjectsFromImage(input_image=input_path, output_image_path=output_path)
-    counter = 0
-    for eachItem in detection:
-        if eachItem["name"] == 'car':
-            counter = counter + 1
-    print(entry + " num of cars : " , counter)
+    image = cv2.imread(input_path)
+    box, label, count = cv.detect_common_objects(image)
+    output = draw_bbox(image, box, label, count)
+    plt.imshow(output)
+    print("Number of cars in this image are " +str(label.count('car')))
+    plt.show()
