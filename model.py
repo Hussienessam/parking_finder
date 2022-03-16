@@ -11,5 +11,5 @@ for entry in entries:
     box, label, count = cv.detect_common_objects(image)
     output = draw_bbox(image, box, label, count)
     plt.imshow(output)
-    print("Number of cars in this image are " +str(label.count('car')))
-    plt.show()
+    print("Number of cars in " + entry + " are " + str(label.count('car')))
+    plt.savefig("./output/" + entry)
