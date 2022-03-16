@@ -18,5 +18,5 @@ for entry in entries:
     output = draw_bbox(image, box, label, count)
     plt.imshow(output)
 
-    print("Number of cars in " + entry + " are " + str(label.count('car')))
+    print(f"Number of cars in {entry} are {str(label.count('car'))}")
     plt.savefig(outpath + entry)
